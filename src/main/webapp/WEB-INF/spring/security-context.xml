@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+   xmlns:beans="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security.xsd">
+        
+   <!--   <beans:bean id="successHandler" class="com.wiyn.web.handler.NewlecSuccessHandler"></beans:bean>
+	 3.1 이전 버전의 인증정보를 표현하는 표현식을 사용하기 위한
+	 <beans:bean id="webSecurityExpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler"/>
+		
+	 인증 정보를 표현하는 표현식을 true로 설정
+ 	<http use-expressions="true" >
+		<form-login login-page="/login" 
+			default-target-url="/joinus/mypage"
+			authentication-failure-url="/joinus/login?error"	
+			/>
+		<logout logout-success-url="/main/index"/>
+		<intercept-url pattern="/joinus/mypage" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/customer/notice-detail" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/teacher/**" access="hasRole('ROLE_TEACHER')" />
+	</http>
+    
+    <authentication-manager>
+      <authentication-provider>
+     	<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="SELECT id userid, pwd password, 1 enabled FROM Member WHERE id=?"
+				authorities-by-username-query="SELECT memberId userid, roleId authorities FROM MemberRole WHERE memberId=?"
+      	/>
+         <user-service>
+            <user name="test" password="test" authorities="ROLE_USER" />
+            <user name="dragon" password="dragon" authorities="ROLE_USER,ROLE_ADMIN" />
+            <user name="newlec" password="1234" authorities="ROLE_MANAGER,ROLE_ADMIN,ROLE_TEACHER" />
+         </user-service>
+      </authentication-provider>
+   </authentication-manager>  -->
+</beans:beans>
