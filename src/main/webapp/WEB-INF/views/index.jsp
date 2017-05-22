@@ -16,5 +16,6 @@
 </head>
 <body>
 	Index Page
+	<a href="main/index">입장</a>
 </body>
 </html>

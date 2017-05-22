@@ -13,11 +13,16 @@
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      
+  <!--     <script type="text/css" src="/Motherbirds/resource/css/ion.rangeSlider.css"></script>
+      <script type="text/css" src="/Motherbirds/resource/css/ion.rangeSlider.skinFlat.css"></script> -->
+      
+
     </head>
 <body>
 <!-- <div class="wrapper">	 -->
 		<tiles:insertAttribute name="header" />
-		
+
 <main>
 <div class="container">
 		<div class="row">	
@@ -46,8 +51,11 @@
 	 
      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
      <script type="text/javascript" src="/WiynPrj/resource/js/materialize.min.js"></script>
+     
 	     <script type="text/javascript">
       $(".button-collapse").sideNav();
       </script>
+      
+      
 </body>
 </html>

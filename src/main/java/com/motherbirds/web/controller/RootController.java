@@ -14,7 +14,7 @@ public class RootController {
 	@RequestMapping("index")
 	public String index() {
 
-		return "index";
+		return "redirect:main/index";
 	}
 
 	
