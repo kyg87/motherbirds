@@ -19,11 +19,11 @@
 		<tiles:insertAttribute name="header" />
 		
 <main>
-<div class="container">
-		<div class="row">	
+	<div class="container">
+		
 		<tiles:insertAttribute name="aside" />
 		<tiles:insertAttribute name="main" />
-	</div>
+
 	</div >
 	<!-- 풋터 -->
 	</main>
