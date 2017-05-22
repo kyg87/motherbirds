@@ -7,10 +7,13 @@
       <script type="text/css" src="/Motherbirds/resource/css/ion.rangeSlider.skinFlat.css"></script>
 		
 <main id="main">
- <c:forEach var="i" begin="1" end="5">
+<div class="container">
+
 	<div class="row">
-		<c:forEach var="i" begin="1" end="3">
-			<div class="col s12 m4">
+	 <c:forEach var="i" begin="1" end="12">
+				<div class="col s12 m6 l4">
+		
+
 				<div class="card">
 					<div class="card-image">
 						<a href="detail"><img
@@ -25,11 +28,14 @@
 							to use effectively.</p>
 					</div>
 				</div>
-			</div>
+		
 
-		</c:forEach>
+
+			</div>
+			</c:forEach>
 	</div>
-</c:forEach>
+
+</div>
 
 
 </main>

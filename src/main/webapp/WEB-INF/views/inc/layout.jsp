@@ -8,8 +8,8 @@
       <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="/WiynPrj/resource/css/materialize.css"  media="screen,projection"/>
-	  <link type="text/css" rel="stylesheet" href="/WiynPrj/resource/css/style.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="/Motherbirds/resource/css/materialize.css"  media="screen,projection"/>
+	  <link type="text/css" rel="stylesheet" href="/Motherbirds/resource/css/style.css"  media="screen,projection"/>
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -24,15 +24,15 @@
 		<tiles:insertAttribute name="header" />
 
 <main>
-<div class="container">
-		<div class="row">	
+
+
 		<tiles:insertAttribute name="aside" />
 		<tiles:insertAttribute name="main" />
-	</div>
-	</div >
+
+
 	<!-- 풋터 -->
 	</main>
-<tiles:insertAttribute name="footer" />
+<%-- <tiles:insertAttribute name="footer" /> --%>
 <!-- </div>	 -->
 	
 	<!-- Modal Structure -->
@@ -50,7 +50,7 @@
 	 <!--Import jQuery before materialize.js-->
 	 
      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-     <script type="text/javascript" src="/WiynPrj/resource/js/materialize.min.js"></script>
+     <script type="text/javascript" src="/Motherbirds/resource/js/materialize.min.js"></script>
      
 	     <script type="text/javascript">
       $(".button-collapse").sideNav();

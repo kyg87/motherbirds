@@ -1,0 +1,140 @@
+@CHARSET "EUC-KR";
+
+
+.header {
+    z-index: 100;
+    position: fixed;
+    width: 100%;
+    vertical-align: top;
+    background-color: rgba(255,255,255,0.9);
+    border-bottom: 1px solid #ddd;
+    top: 0;
+    left: 0;
+    height: 46px;
+}
+
+.logo{
+	text-align: left;
+    font-size: 20px;
+    line-height: 45px;
+    letter-spacing: 3px;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-weight: normal;
+    padding-left: 13px;
+
+}
+.singin{
+
+	right: 85px;
+    text-align: right;
+    font-size: 20px;
+    line-height: 45px;
+    letter-spacing: 3px;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-weight: normal;
+    padding-right: 15px;
+
+    float: right;
+    white-space: nowrap;
+}
+/* .category>a{
+	display: inline-block;
+    overflow: hidden;
+    color: #222;
+    font-size: 14px;
+    line-height: 45px;
+    padding: 0 13px;
+} */
+.login{
+
+	right: 5px;
+    text-align: right;
+    font-size: 20px;
+    line-height: 45px;
+    letter-spacing: 3px;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-weight: normal;
+    padding-right: 15px;
+
+    float: right;
+    white-space: nowrap;
+}
+
+.role{
+	
+}
+
+.wrapper{
+	
+	margin-top: 114px;
+}
+.menubar li {
+	width: 10%;
+	float:right;
+	white-space:nowrap;
+}
+
+.side-nav{
+	top:110px;
+}
+
+main .container{
+	margin-top: 100px;
+	margin-left: 300px;
+}
+
+footer .container{
+	margin-left: 300px;
+	padding-left: 10px;
+}
+
+main .row{
+	padding: 20px;
+}
+
+/* ------------------------------------------------------------------------------------------------ */
+
+@media all and (max-width:480px){
+	.menubar li {
+		width: 33%;
+	}
+	.side-nav{
+		top:0px;
+	}
+	main .container{
+		margin-top: 100px;
+		margin-left: 0px;
+	}
+	footer .container{
+		margin-left: 0px;
+	}
+}
+
+@media all and (min-width:480px) and (max-width:750px) {
+	.menubar li {
+		width: 22%;
+	}
+	.side-nav{
+		top:0px;
+	}
+	main .container{
+		margin-top: 100px;
+		margin-left: 0px;
+	}
+	footer .container{
+	margin-left: 0px;
+	}
+}
+
+@media all and (min-width:750px) and (max-width:992px) {
+	.side-nav{
+		top:0px;
+	}
+	main .container{
+		margin-top: 100px;
+		margin-left: 0px;
+	}
+	footer .container{
+	margin-left: 0px;
+	}
+}
