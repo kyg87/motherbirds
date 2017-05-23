@@ -9,7 +9,7 @@
 		  
 		  $("#btn1").click(function(){
 			  
-			  	var email = $("#email1");
+			  	var id = $("#id");
 		        /* var user = document.querySelector("#userInput"); */
 		        
 		        var pass = $("#pass");
@@ -17,21 +17,21 @@
 		    
 		        var myForm = $("#myForm");
 		        
-		        var str = email.val();//이메일 데이터값
+		        var str = id.val();//이메일 데이터값
 		         
 		        str = str.trim();//공백 제거
 		        
 		        if(!str){
 		            alert("이메일을 입력하세요");
-		            email.focus();//해당입력란으로 포커싱
+		            id.focus();//해당입력란으로 포커싱
 		            return;
 		        }
 		   
-		        if(!emailcheck(str)){
+		   /*      if(!emailcheck(str)){
 		            alert("정상적인 이메일을 입력하세요");
-		            email.focus();
+		            id.focus();
 		            return;
-		        }
+		        } */
 		/*         if(user.value.length ==0){
 		            alert("유저네임을 입력하세요");
 		            user.focus();
@@ -52,10 +52,10 @@
 		            return;
 		        }
 		        
-				$.post("isSingIn", email, function(d) {
+				$.post("isSingIn", id, function(d) {
 					
 					if(d == '1'){
-						alert("중복된 이메일입니다");	
+						alert("중복된 아이디입니다");	
 					}
 					else
 						 myForm.submit();
@@ -85,13 +85,13 @@
 	</script>
  <main id="main">
 
-	
+	<div class="container">
 			<form id="myForm" action="singIn" method="post">
 				<h4>Modal Header</h4>
 				<div class="row">
 					<div class="input-field col s12">
-						<input name="email1" id="email1" type="email" class="validate" required="required" > <label
-							for="email" >Email</label>
+						<input name="id" id="id" type="text" class="validate" required="required" > <label
+							for="email" >Id</label>
 					</div>
 				</div>
 				<div class="row">
@@ -117,7 +117,7 @@
 				</div>
 			</form>
 		
-	
+	</div>
 </main>
 
 
