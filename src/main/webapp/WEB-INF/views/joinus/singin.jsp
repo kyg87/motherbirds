@@ -20,7 +20,7 @@
 		        var str = id.val();//이메일 데이터값
 		         
 		        str = str.trim();//공백 제거
-		        
+		        console.log(str);
 		        if(!str){
 		            alert("이메일을 입력하세요");
 		            id.focus();//해당입력란으로 포커싱

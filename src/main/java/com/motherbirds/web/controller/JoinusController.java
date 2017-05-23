@@ -19,24 +19,22 @@ public class JoinusController {
 	
 	@Autowired
 	private MemberDao memberDao;
-/*	@Autowired
-	private MemberDao memberDao;
+
 	
 	@RequestMapping(value="singIn", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
 	public String singIn(
-			@RequestParam(value="email1")String email, 
+			@RequestParam(value="id")String id, 
 			@RequestParam(value="pass")String pwd
 			) {
 
-		int result = memberDao.add(email, pwd);
+		int result = memberDao.add(id, pwd);
 		
-		System.out.println(result);
 		
-		if(result > 0) memberDao.addRole(email, "ROLE_USER");
+		if(result > 0) memberDao.addRole(id, "ROLE_USER");
 		
 		
 		return "redirect:../main/index";
-	}*/
+	}
 	
 	
 	@RequestMapping("mypage")

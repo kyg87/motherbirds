@@ -7,7 +7,7 @@
     
 	<insert id="add" parameterType="com.motherbirds.web.entity.Member">
 
-		INSERT INTO `lsedb`.`Member1`
+		INSERT INTO `motherbird`.`Member1`
 		(
 		`id`,
 		`pwd`,
@@ -24,7 +24,7 @@
 	
 	<insert id="addRole" parameterType="com.motherbirds.web.entity.Member">
 
-		INSERT INTO `lsedb`.`MemberRole`
+		INSERT INTO `motherbird`.`MemberRole`
 		(
 		`memberId`,
 		`roleId`,
@@ -41,7 +41,7 @@
 	</insert>
 	
 	<select id="isExistId" parameterType="com.motherbirds.web.entity.Member" resultType="Integer" >
-	    SELECT count(*) FROM lsedb.Member1 where id = #{param1};
+	    SELECT count(*) FROM `motherbird`.Member1 where id = #{param1};
 	</select>
 	
 </mapper>
