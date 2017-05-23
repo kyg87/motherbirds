@@ -19,7 +19,7 @@
 	
 
  <main>
-
+<div class="container">
 	<h4>Modal Header</h4>
 			<h1>로그인${validate}</h1>
 				
@@ -49,7 +49,7 @@
 		
 			</form>
 		
-	
+	</div>
 </main>
 
 

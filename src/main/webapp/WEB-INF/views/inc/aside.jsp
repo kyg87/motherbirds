@@ -75,7 +75,7 @@
         </li>
         <li class="bold"><a href="http://materializecss.com/mobile.html" class="waves-effect waves-teal">Mobile</a></li>
         <li class="bold"><a href="showcase.html" class="waves-effect waves-teal">Showcase</a></li>
-        <li class="bold active"><a href="themes.html" class="waves-effect waves-teal">Themes</a></li>
+        <li class="bold active"><a href="free-reg" class="waves-effect waves-teal">±Û¾²±â</a></li>
       </ul>
 	<!--  -->
 </aside>

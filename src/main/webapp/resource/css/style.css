@@ -78,19 +78,21 @@
 	top:110px;
 }
 
-main .container{
+/* main .container{
 	margin-top: 100px;
 	margin-left: 300px;
-}
+} */
 
 footer .container{
 	margin-left: 300px;
 	padding-left: 10px;
 }
 
-main .row{
-	padding: 20px;
+#main{
+	padding-top :100px;
+	padding-left: 300px;
 }
+
 
 /* ------------------------------------------------------------------------------------------------ */
 
