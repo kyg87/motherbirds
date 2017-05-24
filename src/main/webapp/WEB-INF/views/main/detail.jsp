@@ -141,6 +141,16 @@
 				li.textContent = "[" + data.id + "]"+data.msg;
 				
 				chatList.append(li); 
+				
+		/* 		console.log($("#chat-client").scrollTop());
+				console.log($("#chat-list-box").scrollTop());
+				console.log($("#chat-list").scrollTop()); */
+				/* console.log($("#chat-list-box").scrollTop()); */
+				
+				
+				console.log($("#chat-list-box").height());
+				console.log($("#chat-list-box").scrollTop());
+				$("#chat-list-box").scrollTop(10000);
 			};
 
 			wsocket.onclose = function(){
