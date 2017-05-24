@@ -19,10 +19,8 @@
 			<a class="login" href="${root}/joinus/login">Login</a>
 		</security:authorize>
 		<security:authorize access="isAuthenticated()">
-	<%-- 		<a class="login" href="${root}/j_spring_security_logout"> <security:authentication
-					property="name" />LogOut
-			</a> --%>
-			<a class="login" href="${root}/user/mypage"> <security:authentication
+		<a class="login" href="${root}/j_spring_security_logout">LogOut</a>
+		<a class="login" href="${root}/user/mypage"> <security:authentication
 					property="name" /> MyPage</a>
 			
 		</security:authorize>

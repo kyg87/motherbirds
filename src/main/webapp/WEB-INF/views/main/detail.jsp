@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>			
-<script type="text/javascript" src="/Motherbirds/resource/js/jquery-1.12.3.min.js"></script>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 		
 <style>
@@ -34,8 +34,26 @@
     margin-top: 47px;
 }
 
+#chat-client{
+	width: 500px;
+	border: 1px solid #e9e9e9;
+	box-sizing: border-box;
+	padding: 10px;
+}
+#chat-list-box{
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    padding-bottom: 10px;
+    
+    min-height: 300px;
+}
+
     
 </style>
+
+
+
 <main id="main">
 <div class="container">
 <div class="row">
@@ -53,34 +71,80 @@
 
 <div class="profile-box">
 </div>
+<!-- 채팅  -->
 <div>
-<div class="chat-pane">
-	<ul class="chat-list">
-		<li class="chat-message"><span class="chat-message__username">tksrhkdlstod</span><span> : </span><span>신병오셔따</span></li>
-		<li class="chat-message"><span class="chat-message__username">tksrhkdlstod</span><span> : </span><span>신병오셔따</span></li>
-		<li class="chat-message"><span class="chat-message__username">tksrhkdlstod</span><span> : </span><span>신병오셔따</span></li>
-		<li class="chat-message"><span class="chat-message__username">tksrhkdlstod</span><span> : </span><span>신병오셔따</span></li>
-		
-				<li class="chat-message"><span class="chat-message__username">tksrhkdlstod</span><span> : </span><span>신병오셔따</span></li>
-		<li class="chat-message"><span class="chat-message__username">tksrhkdlstod</span><span> : </span><span>신병오셔따</span></li>
-		<li class="chat-message"><span class="chat-message__username">tksrhkdlstod</span><span> : </span><span>신병오셔따</span></li>
-		<li class="chat-message"><span class="chat-message__username">tksrhkdlstod</span><span> : </span><span>신병오셔따</span></li>
-		
-				<li class="chat-message"><span class="chat-message__username">tksrhkdlstod</span><span> : </span><span>신병오셔따</span></li>
-		<li class="chat-message"><span class="chat-message__username">tksrhkdlstod</span><span> : </span><span>신병오셔따</span></li>
-		<li class="chat-message"><span class="chat-message__username">tksrhkdlstod</span><span> : </span><span>신병오셔따</span></li>
-		<li class="chat-message"><span class="chat-message__username">tksrhkdlstod</span><span> : </span><span>신병오셔따</span></li>
-		
-				<li class="chat-message"><span class="chat-message__username">tksrhkdlstod</span><span> : </span><span>신병오셔따</span></li>
-		<li class="chat-message"><span class="chat-message__username">tksrhkdlstod</span><span> : </span><span>신병오셔따</span></li>
-		<li class="chat-message"><span class="chat-message__username">tksrhkdlstod</span><span> : </span><span>신병오셔따</span></li>
-		<li class="chat-message"><span class="chat-message__username">tksrhkdlstod</span><span> : </span><span>신병오셔따</span></li>
-	</ul>
+	<input id="conn-button" type="button" value="접속" />
 </div>
+<div id="chat-client">
+	<div id="chat-list-box">
+		<ul id="chat-list">
+
+		</ul>
+	</div>
+	<div id="chat-panel" >
+		<textarea id="chat-input"></textarea>
+		<input id="send-button" type="button" value="전송" />
+	</div>
 </div>
 
      
 
-  </div>
+</div>
 
 </main>
+
+<security:authentication property="name" var="loginID"/>
+
+<script type="text/javascript">
+	$(function(){
+		
+		console.log('${loginID}');
+		
+		
+		var connButton = $("#conn-button");
+		var sendbutton = $("#send-button");
+		var chatList = $("#chat-list");
+		var wsocket = null;
+
+		var random = Math.floor(Math.random() * 1000) + 1;
+		
+		sendbutton.click(function(){
+			var chatIput = $("#chat-input");
+			var msg = chatIput.val();
+
+			
+			if('${loginID}'=='anonymousUser'){
+				
+				var anonymousUser = '${loginID}'  +":"+ random;
+				var data =	{"id":anonymousUser,"msg":msg};
+			}
+			else{
+				var data =	{"id":'${loginID}',"msg":msg};
+			}
+
+			
+			wsocket.send(JSON.stringify(data));
+		});
+
+		connButton.click(function(event){
+		
+			wsocket = new WebSocket("ws://211.238.142.79:8080/Motherbirds/chat/chatserver");
+			wsocket.onopen = function(event){
+				alert("접속 되었습니다.");
+				console.log(event);
+			};
+
+			wsocket.onmessage = function(event){
+		 		var li = document.createElement("li");
+				var data = JSON.parse(event.data);
+				li.textContent = "[" + data.id + "]"+data.msg;
+				
+				chatList.append(li); 
+			};
+
+			wsocket.onclose = function(){
+				alert("접속이 끊겼습니다.")
+			};
+		});
+	 });
+</script>

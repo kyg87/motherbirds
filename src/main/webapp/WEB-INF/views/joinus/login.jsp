@@ -18,9 +18,10 @@
 	</script>
 	
 
- <main>
+ <main id = "main">
 <div class="container">
 	<h4>Modal Header</h4>
+	<p></p>
 			<h1>로그인${validate}</h1>
 				
 			<form id="myForm1" action="${root}/j_spring_security_check" method="post">
