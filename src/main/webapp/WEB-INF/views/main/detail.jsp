@@ -39,6 +39,7 @@
 	border: 1px solid #e9e9e9;
 	box-sizing: border-box;
 	padding: 10px;
+	height: 300px;
 }
 #chat-list-box{
     overflow-y: auto;
