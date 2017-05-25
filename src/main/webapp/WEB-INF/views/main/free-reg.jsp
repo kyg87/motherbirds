@@ -19,15 +19,15 @@
       	width:100%;
         height: 300px;
       }
-	#content .container .row {
+/* 	#content .container .row {
 	    /* margin-bottom: 0; */
 	    padding-left: 10px;
-	}
+	} */
 </style>
 
 
 
-<body onload="loadDemo()">
+<main id="main" >
 <div class="container">
   <nav>
     <div class="nav-wrapper">
@@ -143,7 +143,7 @@
 		
 
 	</div>
-</body>
+</main>
 
 <script>
     function loadDemo() {
@@ -197,6 +197,6 @@
             break;
         }
     }
-
+    loadDemo();
 </script>
 </head>

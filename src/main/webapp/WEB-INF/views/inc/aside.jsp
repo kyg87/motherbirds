@@ -50,27 +50,7 @@
                 </ul>
               </div>
             </li>
-            <li class="bold active"><a class="collapsible-header  waves-effect waves-teal active">JavaScript</a>
-              <div class="collapsible-body" style="display: block;">
-                <ul>
-                  <li><a href="carousel.html">Carousel</a></li>
-                  <li><a href="collapsible.html">Collapsible</a></li>
-                  <li><a href="dialogs.html">Dialogs</a></li>
-                  <li><a href="dropdown.html">Dropdown</a></li>
-                  <li><a href="feature-discovery.html">FeatureDiscovery</a></li>
-                  <li><a href="media.html">Media</a></li>
-                  <li><a href="modals.html">Modals</a></li>
-                  <li><a href="parallax.html">Parallax</a></li>
-                  <li><a href="pushpin.html">Pushpin</a></li>
-                  <li><a href="scrollfire.html">ScrollFire</a></li>
-                  <li><a href="scrollspy.html">Scrollspy</a></li>
-                  <li><a href="side-nav.html">SideNav</a></li>
-                  <li><a href="tabs.html">Tabs</a></li>
-                  <li><a href="transitions.html">Transitions</a></li>
-                  <li><a href="waves.html">Waves</a></li>
-                </ul>
-              </div>
-            </li>
+        
           </ul>
         </li>
         <li class="bold"><a href="http://materializecss.com/mobile.html" class="waves-effect waves-teal">Mobile</a></li>

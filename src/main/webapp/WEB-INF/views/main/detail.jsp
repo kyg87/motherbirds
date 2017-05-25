@@ -35,7 +35,6 @@
 }
 
 #chat-client{
-	width: 500px;
 	border: 1px solid #e9e9e9;
 	box-sizing: border-box;
 	padding: 10px;
@@ -46,10 +45,12 @@
     overflow-x: hidden;
     height: 100%;
     padding-bottom: 10px;
-    
     min-height: 300px;
 }
-
+ #map {
+      	width:100%;
+        height: 300px;
+      }
     
 </style>
 
