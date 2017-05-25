@@ -156,6 +156,10 @@ ${n.memberId }</br>
 				console.log($("#chat-list-box").height());
 				console.log($("#chat-list-box").scrollTop());
 				$("#chat-list-box").scrollTop(10000);
+				var chatIput = $("#chat-input");
+				chatIput.val('');
+				chatIput.focus();
+				
 			};
 
 			wsocket.onclose = function(){
