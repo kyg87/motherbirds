@@ -10,15 +10,15 @@
 <div class="container">
 
 	<div class="row">
-	 <c:forEach var="i" begin="1" end="12">
+	 <c:forEach var="i" items="${boardList }">
 				<div class="col s12 m6 l4">
 		
 
 				<div class="card">
 					<div class="card-image">
-						<a href="detail"><img
+						<a href="detail?c=${i.id }"><img
 							src="/Motherbirds/resource/images/79782505.1.jpg"></a> <span
-							class="card-title">Card Title</span> <a
+							class="card-title">Card Title${i.id}</span> <a
 							class="btn-floating halfway-fab waves-effect waves-light red"><i
 							class="material-icons">add</i></a>
 					</div>

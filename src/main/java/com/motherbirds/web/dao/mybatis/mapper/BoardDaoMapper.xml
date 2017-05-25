@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.motherbirds.web.dao.BoardDao">
+
+<select resultType="com.motherbirds.web.entity.Board" id="get"> 
+
+SELECT 
+    *
+FROM
+    motherbird.Board1
+WHERE
+    id = #{id};
+
+</select>
+
+<select resultType="com.motherbirds.web.entity.Board" id="getList"> 
+
+	SELECT * FROM motherbird.Board1;
+
+</select>
+
+<insert id="add" parameterType="com.motherbirds.web.entity.Board">
+	<selectKey order="BEFORE" keyProperty="id" resultType="String">
+		select IFNULL(max(cast(id as unsigned)),0)+1 id from Board1
+	</selectKey>
+
+	INSERT INTO `motherbird`.`Board1`
+	(`id`,
+	`title`,
+	`content`,
+	`regDate`,
+	`memberId`)
+
+	VALUES
+	(
+	#{id},
+	#{title},
+	#{content},
+	now(),
+	#{memberId}
+	)
+	
+</insert>
+
+<delete id="delete">
+	DELETE FROM `motherbird`.`Board1`
+	WHERE id=#{id}
+	
+</delete>
+
+
+<update id="update">
+
+	UPDATE `motherbird`.`Board1`
+	SET
+
+	`title` = #{title},
+	`contentSrc` = #{contentSrc},
+	`content` = #{content}
+
+	WHERE `id` = #{id}
+	
+</update>
+
+
+</mapper>

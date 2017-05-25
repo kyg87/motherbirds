@@ -1,26 +1,48 @@
 package com.motherbirds.web.controller;
 
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.motherbirds.web.dao.BoardDao;
 import com.motherbirds.web.entity.Board;
+
 
 @Controller
 @RequestMapping("/main/*")
 public class MainController {
-
+	@Autowired
+	private SqlSession sqlSession;
+	@Autowired
+	private BoardDao boardDao;
 
 	@RequestMapping("index")
-	public String index() {
+	public String index(Model model) {
 
+		
+		List<Board> boardList = sqlSession.getMapper(BoardDao.class).getList();
+		
+		model.addAttribute("boardList", boardList);
 		return "main.index";
 	}
 	
 	@RequestMapping("detail")
-	public String detail() {
+	public String detail(@RequestParam("c") String id,
+			Model model) {
 
+		Board board = new Board();
+
+		board = sqlSession.getMapper(BoardDao.class).get(id);
+		/*board.setFreeComment(sqlSession.getMapper(FreeCommentDao.class).getList(id, page));*/
+
+		model.addAttribute("n", board);
+		
 		return "main.detail";
 	}
 	
@@ -32,22 +54,25 @@ public class MainController {
 	
 	
 	@RequestMapping(value = "reg", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
-	public String free(Board freeboard, 
+	public String free(Board board, 
 			@RequestParam(value = "title") String title,
 			@RequestParam(value = "content") String content, 
-			@RequestParam(value = "contentSrc") String contentSrc,
+		
 			@RequestParam(value = "memberId") String memberId
 			) {
-
-		freeboard.setTitle(title);
-
-		freeboard.setMemberId(memberId);
 		
+		board.setTitle(title);
+		board.setContent(content);
+		board.setMemberId(memberId);
 		
+		System.out.println(title);
+		System.out.println(content);
+		System.out.println(memberId);
 		
+		boardDao.add(board);
 		//freeBoardDao.add(freeboard);
 
-		return "redirect:free-detail?c=" + freeboard.getId();
+		return "redirect:detail?c=" + board.getId();
 
 	}
 

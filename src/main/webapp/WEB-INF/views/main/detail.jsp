@@ -57,6 +57,10 @@
 
 <main id="main">
 <div class="container">
+${n.id }</br>
+${n.title }</br>
+${n.content }</br>
+${n.memberId }</br>
 <div class="row">
 <div class="col l8 s12">
 <div class="view-page">
@@ -129,7 +133,7 @@
 
 		connButton.click(function(event){
 		
-			wsocket = new WebSocket("ws://211.238.142.79:8080/Motherbirds/chat/chatserver");
+			wsocket = new WebSocket("ws://125.129.60.149:8080/Motherbirds/chat/chatserver");
 			wsocket.onopen = function(event){
 				alert("접속 되었습니다.");
 				console.log(event);

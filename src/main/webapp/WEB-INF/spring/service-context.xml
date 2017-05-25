@@ -27,6 +27,7 @@
 			value="classpath:com/motherbirds/web/dao/mybatis/mapper/*.xml" />
 	</bean>
 	
+	<bean class="com.motherbirds.web.dao.mybatis.MyBatisBoardDao" />
 	<bean class="com.motherbirds.web.dao.mybatis.MyBatisMemberDao" />
 	<context:annotation-config />
 </beans>

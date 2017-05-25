@@ -56,14 +56,14 @@
                         <form action="reg" method="post"class="contact-form">
                           <div class="row">
                             <div class="input-field col s12">
-                              <input id="name" type="text">
-                              <label for="first_name" class="">Name</label>
+                              <input name="title" id="name" type="text">
+                              <label for="title" class="">title</label>
                             </div>
                           </div>
                           <div class="row">
                             <div class="input-field col s12">
-                              <input id="email" type="email">
-                              <label for="email" class="">Email</label>
+                              <input name ="content" name="content" id="email" type="text">
+                              <label for="content" class="">content</label>
                             </div>
                           </div>
                           <div class="row">
@@ -77,6 +77,7 @@
                               <textarea id="message" class="materialize-textarea"></textarea>
                               <label for="message" class="">Message</label>
                             </div>
+                            <input type="hidden" name="memberId" value=<security:authentication property="name"/>	>
                             <div class="row">
                               <div class="input-field col s12">
                                 <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Send

@@ -9,7 +9,8 @@ public class Board {
 	
 	private String id;
     private String title;
-    private Date regDate;
+    private String content;
+	private Date regDate;
     private String memberId;
     
     private List<Comment> comments;
@@ -27,6 +28,12 @@ public class Board {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+    public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}	
 	public Date getRegDate() {
 		return regDate;
 	}
