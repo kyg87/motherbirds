@@ -31,8 +31,10 @@ public class ChatServerEndPoint {
    
    //함수이름은 내 맘대로 OnOpen이라는 어노테이션으로 소켓 구분을 해주는거지용
    @OnOpen
-   public void OnOpen(Session session, EndpointConfig config){
+   public void OnOpen(Session session, EndpointConfig config) throws IOException{
       clients.add(session);
+      
+
       //접속되었는지 콘솔에 찍어보쟈
       //System.out.println(session.getBasicRemote());
       System.out.println(session.toString() + ": connected");

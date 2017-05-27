@@ -5,7 +5,7 @@ import java.util.Date;
 public class Comment {
 	
 	private String id;
-    private String content;
+    private String comment;
     private Date regDate;
     private String boardId;
     private String memberId;
@@ -16,11 +16,12 @@ public class Comment {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getContent() {
-		return content;
+
+	public String getComment() {
+		return comment;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 	public Date getRegDate() {
 		return regDate;

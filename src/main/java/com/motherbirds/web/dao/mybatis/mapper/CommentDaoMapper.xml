@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.motherbirds.web.dao.CommentDao">
+
+<select resultType="com.motherbirds.web.entity.Comment" id="get"> 
+
+SELECT * FROM motherbird.Comment where boardId =  ${boardId} order by regDate desc LIMIT ${(page-1) *10},10;
+</select>
+
+<select resultType="com.motherbirds.web.entity.Comment" id="getList"> 
+
+SELECT * FROM motherbird.Comment;
+
+</select>
+
+<insert id="add" parameterType="com.motherbirds.web.entity.Comment">
+	<selectKey order="BEFORE" keyProperty="id" resultType="String">
+		select IFNULL(max(cast(id as unsigned)),0)+1 id from Comment
+	</selectKey>
+
+
+	INSERT INTO `motherbird`.`Comment`
+	(`id`,
+	`comment`,
+	`regDate`,
+	`boardId`,
+	`memberId`)
+	VALUES
+	(#{id},
+	#{comment},
+	now(),
+	#{boardId},
+	#{memberId}
+	)
+	
+</insert>
+
+
+
+<delete id="delete">
+DELETE FROM `motherbird`.`Comment`
+WHERE id = #{id}
+	
+</delete>
+
+
+<select id="getSize" resultType="Integer">
+		SELECT count(*) FROM Comment where id = #{id};
+</select>
+
+
+</mapper>

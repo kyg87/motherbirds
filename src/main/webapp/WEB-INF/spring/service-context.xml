@@ -29,5 +29,6 @@
 	
 	<bean class="com.motherbirds.web.dao.mybatis.MyBatisBoardDao" />
 	<bean class="com.motherbirds.web.dao.mybatis.MyBatisMemberDao" />
+	<bean class="com.motherbirds.web.dao.mybatis.MyBatisCommentDao" />
 	<context:annotation-config />
 </beans>

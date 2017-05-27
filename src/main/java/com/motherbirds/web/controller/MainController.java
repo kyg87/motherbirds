@@ -9,9 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.motherbirds.web.dao.BoardDao;
+import com.motherbirds.web.dao.CommentDao;
 import com.motherbirds.web.entity.Board;
+import com.motherbirds.web.entity.Comment;
+
 
 
 @Controller
@@ -22,6 +26,9 @@ public class MainController {
 	@Autowired
 	private BoardDao boardDao;
 
+	@Autowired
+	private CommentDao commentDao;
+	
 	@RequestMapping("index")
 	public String index(Model model) {
 
@@ -75,5 +82,29 @@ public class MainController {
 		return "redirect:detail?c=" + board.getId();
 
 	}
+	
+	@RequestMapping(value = "board-comment-add", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	@ResponseBody
+	public String freeDetailComment(Comment comment, 
+			
+			@RequestParam(value = "message") String message,
+			@RequestParam(value = "boardId") String boardId, 
+			@RequestParam(value = "memberId") String memberId
+			
+	) {
+		System.out.println("adada" + message);
+		comment.setComment(message);
+		comment.setBoardId(boardId);
+		comment.setMemberId(memberId);
+
+		
+		
+		int result = commentDao.add(comment);
+		
+			
+		return String.valueOf(result);
+
+	}
+	
 
 }

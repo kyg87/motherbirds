@@ -9,7 +9,7 @@
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="/Motherbirds/resource/css/materialize.css"  media="screen,projection"/>
-	  <link type="text/css" rel="stylesheet" href="/Motherbirds/resource/css/style.css"  media="screen,projection"/>
+	  <!-- <link type="text/css" rel="stylesheet" href="/Motherbirds/resource/css/style.css"  media="screen,projection"/> -->
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -26,7 +26,7 @@
 <main>
 
 
-		<tiles:insertAttribute name="aside" />
+		<%-- <tiles:insertAttribute name="aside" /> --%>
 		<tiles:insertAttribute name="main" />
 
 
@@ -52,9 +52,25 @@
      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
      <script type="text/javascript" src="/Motherbirds/resource/js/materialize.min.js"></script>
      
-	     <script type="text/javascript">
-      $(".button-collapse").sideNav();
-      </script>
+	 <script type="text/javascript">
+	 
+	 	 //사이드메뉴 초기화
+     	 $(".button-collapse").sideNav();
+     	 
+	 	 //모달창 초기화
+     	 $(document).ready(function(){
+     	    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+     	    $('.modal').modal();
+     	  });
+     	 //Toasts tooltips 초기화
+     	 $(document).ready(function(){
+     	    $('.tooltipped').tooltip({delay: 50});
+     	  });
+     	 //슬라이드 초기화
+     	  $(document).ready(function(){
+     		  $('.carousel.carousel-slider').carousel({fullWidth: true});
+     	    });
+     </script>
       
       
 </body>
