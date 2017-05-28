@@ -23,14 +23,14 @@ import com.google.gson.GsonBuilder;
 public class ChatServerEndPoint {
    //컬렉션의 종류 3가지 식별자에 따라..(값, index, 다른 무언가)
    private static Set<Session> clients;
-   private static HashMap<String,ArrayList<Session>> map;
+   private static HashMap<String,ArrayList<ChatData>> map;
    
    // CUD / R 로 나눔 -> 읽고있을때 조작하면 안됨. -> 동기화가 필요(1.라이브러리사용 2.직접동기화)
    // 스레드환경하에 모든 스레드가 Set에 들어가야함. -> static으로 만든 이유
    static{
       //누군가가 로딩중일때 조작이 들어오는 스레드를 막아주는 동기화셋으로 해쉬셋을 감싸줌
       clients = Collections.synchronizedSet(new HashSet<>());
-      map = new HashMap<String, ArrayList<Session>>();
+      map = new HashMap<String, ArrayList<ChatData>>();
 
       
    }
@@ -55,19 +55,21 @@ public class ChatServerEndPoint {
       
       if(chatData.getType().equals("enter")){
     	  
+    	  chatData.setSession(session);
+    	  
     	  if(seekRoom(chatData.getRoom())){
-    		  addUserRomm(chatData.getRoom(), session);
+    		  addUserRomm(chatData.getRoom(), chatData);
     	  }
     	  else{
-    		  addRomm(chatData.getRoom(),session);
+    		  addRomm(chatData.getRoom(),chatData);
     	  }
       }
       //type message이면
       else {
-    	  ArrayList<Session> list = map.get(chatData.getRoom());
+    	  ArrayList<ChatData> list = map.get(chatData.getRoom());
     	  
-    	  for (Session session2 : list) {
-			session2.getBasicRemote().sendText(data);
+    	  for (ChatData chatData1 : list) {
+    		  chatData1.getSession().getBasicRemote().sendText(data);
 		}
       }
       
@@ -98,19 +100,19 @@ public class ChatServerEndPoint {
 	   return false;
    }
    
-   void addRomm(String room,Session session){
-	   ArrayList<Session> list = new ArrayList<>();
-	   list.add(session);
+   void addRomm(String room,ChatData chatData){
+	   ArrayList<ChatData> list = new ArrayList<>();
+	   list.add(chatData);
 	   map.put(room, list);
 	   
 	   System.out.println("개설된 방 :" + room);
 	   System.out.println("유저수 : " + list.size());
    }
    
-   void addUserRomm(String room,Session session){
-	   ArrayList<Session> list = map.get(room);
+   void addUserRomm(String room,ChatData chatData){
+	   ArrayList<ChatData> list = map.get(room);
 	   
-	   list.add(session);
+	   list.add(chatData);
 	   System.out.println("개설된 방 :" + room);
 	   System.out.println("유저수 : " + list.size());
    }

@@ -46,7 +46,7 @@ public class MainController {
 		Board board = new Board();
 
 		board = sqlSession.getMapper(BoardDao.class).get(id);
-		board.setComments(sqlSession.getMapper(CommentDao.class).getList(id, 1));
+		board.setComments(sqlSession.getMapper(CommentDao.class).getList());
 
 		model.addAttribute("n", board);
 		

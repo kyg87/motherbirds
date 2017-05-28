@@ -6,12 +6,12 @@
 
 <select resultType="com.motherbirds.web.entity.Comment" id="get"> 
 
-SELECT * FROM motherbird.Comment where boardId =  ${boardId} order by regDate desc LIMIT ${(page-1) *10},10;
+SELECT * FROM motherbird.Comment where id = #{id}
 </select>
 
 <select resultType="com.motherbirds.web.entity.Comment" id="getList"> 
 
-SELECT * FROM motherbird.Comment;
+SELECT * FROM motherbird.Comment order by Comment.regDate asc;
 
 </select>
 

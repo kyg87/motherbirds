@@ -1,4 +1,4 @@
-
+import javax.websocket.Session;
 
 public class ChatData {
 	
@@ -6,6 +6,8 @@ public class ChatData {
 	private String msg;
 	private String type;
 	private String room;
+	
+	private Session session;
 	
 	public String getId() {
 		return id;
@@ -31,6 +33,13 @@ public class ChatData {
 	public void setRoom(String room) {
 		this.room = room;
 	}
+	public Session getSession() {
+		return session;
+	}
+	public void setSession(Session session) {
+		this.session = session;
+	}
+	
 	
 	
 }
