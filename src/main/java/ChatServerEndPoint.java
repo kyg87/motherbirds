@@ -1,7 +1,9 @@
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,12 +23,16 @@ import com.google.gson.GsonBuilder;
 public class ChatServerEndPoint {
    //컬렉션의 종류 3가지 식별자에 따라..(값, index, 다른 무언가)
    private static Set<Session> clients;
+   private static HashMap<String,ArrayList<Session>> map;
    
    // CUD / R 로 나눔 -> 읽고있을때 조작하면 안됨. -> 동기화가 필요(1.라이브러리사용 2.직접동기화)
    // 스레드환경하에 모든 스레드가 Set에 들어가야함. -> static으로 만든 이유
    static{
       //누군가가 로딩중일때 조작이 들어오는 스레드를 막아주는 동기화셋으로 해쉬셋을 감싸줌
       clients = Collections.synchronizedSet(new HashSet<>());
+      map = new HashMap<String, ArrayList<Session>>();
+
+      
    }
    
    //함수이름은 내 맘대로 OnOpen이라는 어노테이션으로 소켓 구분을 해주는거지용
@@ -34,7 +40,7 @@ public class ChatServerEndPoint {
    public void OnOpen(Session session, EndpointConfig config) throws IOException{
       clients.add(session);
       
-
+      System.out.println(session.getId());
       //접속되었는지 콘솔에 찍어보쟈
       //System.out.println(session.getBasicRemote());
       System.out.println(session.toString() + ": connected");
@@ -45,17 +51,32 @@ public class ChatServerEndPoint {
    @OnMessage
    public void onTextMessage(Session session, String data) throws IOException{
       
-      System.out.println(data);
-      //메시지 보낸친구에게 echo (1:1 채팅할꺼면 여기서 모으면 되겠다.)
-      //session.getBasicRemote().sendText(data);
       ChatData  chatData = new Gson().fromJson(data, ChatData.class);
       
-      System.out.println(chatData);
-      System.out.println(chatData.getMsg());
+      if(chatData.getType().equals("enter")){
+    	  
+    	  if(seekRoom(chatData.getRoom())){
+    		  addUserRomm(chatData.getRoom(), session);
+    	  }
+    	  else{
+    		  addRomm(chatData.getRoom(),session);
+    	  }
+      }
+      //type message이면
+      else {
+    	  ArrayList<Session> list = map.get(chatData.getRoom());
+    	  
+    	  for (Session session2 : list) {
+			session2.getBasicRemote().sendText(data);
+		}
+      }
+      
+  /*    System.out.println(chatData);
+      System.out.println(chatData.getMsg());*/
       /*new GsonBuilder()*/
       
-      for(Session s : clients)
-         s.getBasicRemote().sendText(data);
+/*      for(Session s : clients)
+         s.getBasicRemote().sendText(data);*/
          
       //System.out.println();      
    }
@@ -66,5 +87,32 @@ public class ChatServerEndPoint {
       System.out.println(session.toString() + ": disconneted");
    }
    
+   
+   boolean seekRoom(String room){
+	   
+	   if(map.containsKey(room)){
+		   
+		   return true;
+	   }
+	   
+	   return false;
+   }
+   
+   void addRomm(String room,Session session){
+	   ArrayList<Session> list = new ArrayList<>();
+	   list.add(session);
+	   map.put(room, list);
+	   
+	   System.out.println("개설된 방 :" + room);
+	   System.out.println("유저수 : " + list.size());
+   }
+   
+   void addUserRomm(String room,Session session){
+	   ArrayList<Session> list = map.get(room);
+	   
+	   list.add(session);
+	   System.out.println("개설된 방 :" + room);
+	   System.out.println("유저수 : " + list.size());
+   }
       
 }

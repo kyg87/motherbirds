@@ -46,7 +46,7 @@ public class MainController {
 		Board board = new Board();
 
 		board = sqlSession.getMapper(BoardDao.class).get(id);
-		/*board.setFreeComment(sqlSession.getMapper(FreeCommentDao.class).getList(id, page));*/
+		board.setComments(sqlSession.getMapper(CommentDao.class).getList(id, 1));
 
 		model.addAttribute("n", board);
 		
@@ -85,14 +85,14 @@ public class MainController {
 	
 	@RequestMapping(value = "board-comment-add", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String freeDetailComment(Comment comment, 
+	public String comment(Comment comment, 
 			
 			@RequestParam(value = "message") String message,
 			@RequestParam(value = "boardId") String boardId, 
 			@RequestParam(value = "memberId") String memberId
 			
 	) {
-		System.out.println("adada" + message);
+		
 		comment.setComment(message);
 		comment.setBoardId(boardId);
 		comment.setMemberId(memberId);

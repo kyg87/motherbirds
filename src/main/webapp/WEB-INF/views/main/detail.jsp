@@ -103,11 +103,11 @@ ${n.memberId }</br> --%>
     <div class="carousel-item green white-text" href="#three!">
       <h2>VoteResult Panel</h2>
       <p class="white-text">This is your vote result panel</p>
-      <div id="range_01" class="irs-hidden-input"></div>
-      <div id="range_02" class="irs-hidden-input"></div>
-      <div id="range_03" class="irs-hidden-input"></div>
-      <div id="range_04" class="irs-hidden-input"></div>
-      <div id="range_05" class="irs-hidden-input"></div>
+      <div id="range_01" class="irs"></div>
+      <div id="range_02" class="irs"></div>
+      <div id="range_03" class="irs"></div>
+      <div id="range_04" class="irs"></div>
+      <div id="range_05" class="irs"></div>
     </div>
 
     <div class="carousel-item" id="map">
@@ -115,7 +115,7 @@ ${n.memberId }</br> --%>
     </div>
     
   </div>
-<div id="range_01" class="irs-hidden-input"></div>
+<!-- <div id="range_01" class="irs-hidden-input"></div> -->
 <script type="text/javascript" src="/Motherbirds/resource/js/ion.rangeSlider.js"></script>
 
 <!-- <div class="profile-box">
@@ -127,6 +127,9 @@ ${n.memberId }</br> --%>
 <div id="chat-client">
 	<div id="chat-list-box">
 		<ul id="chat-list">
+		<c:forEach var="v" items="${n.comments }">
+		<li>[${v.memberId }] ${v.comment} </li>
+		</c:forEach>
 
 		</ul>
 	</div>
@@ -191,13 +194,17 @@ function onCreate(){
     	
     	min :0,
     	max:100,
-    	from:30
+    	from:30,
+    	 from_fixed: true,
+    	    to_fixed: true
     });
     $("#range_02").ionRangeSlider({
     	
     	min :0,
     	max:100,
-    	from:30
+    	from:30,
+    	 from_fixed: true,
+    	    to_fixed: true
     });
     $("#range_03").ionRangeSlider({
     	
@@ -259,20 +266,20 @@ function onCreate(){
 		
 		sendbutton.click(function(){
 			var chatIput = $("#chat-input");
-			var msg = chatIput.val();
+		
+
+			var msg = {
+					    type: "message",
+					    text: chatIput.val(),
+					    id:  '${loginID}',
+					    room:'${n.id}',
+					    date: Date.now()
+			};
+			
+
 
 			
-			if('${loginID}'=='anonymousUser'){
-				
-				var anonymousUser = '${loginID}'  +":"+ random;
-				var data =	{"id":anonymousUser,"msg":msg};
-			}
-			else{
-				var data =	{"id":'${loginID}',"msg":msg};
-			}
-
-			
-			wsocket.send(JSON.stringify(data));
+			wsocket.send(JSON.stringify(msg));
 			onCreate();
 		});
 
@@ -280,16 +287,24 @@ function onCreate(){
 		
 			wsocket = new WebSocket("ws://125.129.60.149:8080/Motherbirds/chat/chatserver");
 			wsocket.onopen = function(event){
-				alert("접속 되었습니다.");
+				//alert("접속 되었습니다.");
 				console.log(event);
-			
+				var msg = {
+					    type: "enter",
+					    text: "'${n.id}'접속했습니다",
+					    id:  '${loginID}',
+					    room:'${n.id}',
+					    date: Date.now()
+			};
+				
+				wsocket.send(JSON.stringify(msg));
 				getloc();
 			};
 
 			wsocket.onmessage = function(event){
 		 		var li = document.createElement("li");
 				var data = JSON.parse(event.data);
-				li.textContent = "[" + data.id + "]"+data.msg;
+				li.textContent = "[" + data.id + "]"+data.text;
 				
 				chatList.append(li); 		
 				
@@ -299,6 +314,9 @@ function onCreate(){
 				var chatIput = $("#chat-input");
 				chatIput.val('');
 				chatIput.focus();
+				
+				
+				
 				
 			};
 
