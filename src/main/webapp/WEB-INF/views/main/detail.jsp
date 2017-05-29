@@ -30,9 +30,6 @@
     padding-bottom: 10px;
 }
 
-#main{
-    margin-top: 47px;
-}
 
 #chat-client{
 	border: 1px solid #e9e9e9;
@@ -50,10 +47,10 @@
 #chat-panel{
     margin-top: 10px;
 }
-/*  #map {
-      	width:100%;
-        height: 300px;
-      } */
+  #map {
+      	
+      box-sizing: content-box;
+  } 
     
 </style>
 
@@ -69,7 +66,7 @@ ${n.memberId }</br> --%>
 	<div class="row">
 
 
-	<div class="carousel carousel-slider center" data-indicators="true">
+	<!-- <div class="carousel carousel-slider center" data-indicators="true">
 		<div class="carousel-fixed-item center">
 		<a class="btn waves-effect white grey-text darken-text-2">button</a>
 		</div>
@@ -115,8 +112,41 @@ ${n.memberId }</br> --%>
 		<h2>Map Panel</h2>
 		</div>
 		
-	</div>
-
+	</div> -->
+ <div class="slider">
+    <ul class="slides">
+      <li>
+        <img src="http://lorempixel.com/580/250/nature/1"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="http://lorempixel.com/580/250/nature/2"> <!-- random image -->
+        <div class="caption left-align">
+			<div id="range_01" class="irs"></div>
+			<div id="range_02" class="irs"></div>
+			<div id="range_03" class="irs"></div>
+			<div id="range_04" class="irs"></div>
+			<div id="range_05" class="irs"></div>
+        </div>
+      </li>
+      <li>
+        <img src="http://lorempixel.com/580/250/nature/3"> <!-- random image -->
+        <div class="caption right-align">
+          <h3>Right Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <!-- <img src="http://lorempixel.com/580/250/nature/4"> random image -->
+        <div id="map" class="caption center-align">
+     
+        </div>
+      </li>
+    </ul>
+  </div>
 	<script type="text/javascript" src="/Motherbirds/resource/js/ion.rangeSlider.js"></script>
 
 
@@ -363,7 +393,7 @@ function onCreate(){
 					    date: Date.now(),
 						latitude :latitude,
 			     		longitude :longitude
-			};
+				};
 				
 				wsocket.send(JSON.stringify(msg));
 				getloc();
@@ -413,7 +443,9 @@ function onCreate(){
 			};
 
 			wsocket.onclose = function(){
-				alert("접속이 끊겼습니다.")
+				alert("접속이 끊겼습니다.");
+			
+			
 			};
 		});
 	 });

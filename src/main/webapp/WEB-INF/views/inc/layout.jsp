@@ -67,9 +67,13 @@
      	    $('.tooltipped').tooltip({delay: 50});
      	  });
      	 //슬라이드 초기화
-     	  $(document).ready(function(){
-     		  $('.carousel.carousel-slider').carousel({fullWidth: true});
-     	    });
+		  $(document).ready(function(){
+		      $('.slider').slider({
+		    	 height : 200,
+		    	 interval: 100000
+		    
+		      });
+		    });
      </script>
       
       

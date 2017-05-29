@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import javax.websocket.EndpointConfig;
@@ -50,7 +51,7 @@ public class ChatServerEndPoint {
    //TCP -> 세션이 각각 구별되어있음  // UDP -> 같은 세션으로 들어오게됨. 
    @OnMessage
    public void onTextMessage(Session session, String data) throws IOException{
-      
+     
       ChatData  chatData = new Gson().fromJson(data, ChatData.class);
       
       if(chatData.getType().equals("enter")){
@@ -90,9 +91,26 @@ public class ChatServerEndPoint {
    }
    
    @OnClose
-   public void OnClose(Session session){
+   public void OnClose(Session session ){
       clients.remove(session);
+     
       System.out.println(session.toString() + ": disconneted");
+      
+      for(String key : map.keySet()){
+    	  
+    	  ArrayList<ChatData> list = map.get(key);
+    	  
+    	  for (ChatData chatData : list) {
+			if(chatData.getSession() == session){
+				System.out.println(session.toString());
+				list.remove(chatData);
+				
+				System.out.println("지운다.");
+			}
+		}
+    	  
+      }
+      
    }
    
    
@@ -119,8 +137,15 @@ public class ChatServerEndPoint {
 	   list.add(chatData);
 	   System.out.println("개설된 방 :" + room);
 	   System.out.println("유저수 : " + list.size());
-	   
 
+   }
+   
+   void removeUserRoom(String room,ChatData chatData){
+	   ArrayList<ChatData> list = map.get(room);
+	   
+	   list.remove(chatData);
+	   System.out.println("개설된 방 :" + room);
+	   System.out.println("유저수 : " + list.size());
    }
       
 }
