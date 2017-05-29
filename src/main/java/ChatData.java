@@ -1,12 +1,22 @@
 import javax.websocket.Session;
 
+import com.google.gson.annotations.Expose;
+
 public class ChatData {
-	
+	@Expose
 	private String id;
+	@Expose
 	private String msg;
+	@Expose
 	private String type;
+	@Expose
 	private String room;
+	@Expose
+	private String latitude;
+	@Expose
+	private String longitude;
 	
+	@Expose(serialize = false)
 	private Session session;
 	
 	public String getId() {
@@ -32,6 +42,18 @@ public class ChatData {
 	}
 	public void setRoom(String room) {
 		this.room = room;
+	}
+	public String getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+	public String getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
 	}
 	public Session getSession() {
 		return session;

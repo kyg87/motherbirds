@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.motherbirds.web.entity.Board;
 
-
-
 public interface BoardDao {
 
 	Board get(String id);

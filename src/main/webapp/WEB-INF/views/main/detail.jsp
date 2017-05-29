@@ -264,6 +264,66 @@ function onCreate(){
 
 		var random = Math.floor(Math.random() * 1000) + 1;
 		
+		var latitude = null;
+	    var longitude = null;
+	    
+	    
+	    function loadDemo() {
+	        if (navigator.geolocation) {
+	          /*   alert("Your browser supports geolocation service."); */
+	            getloc();
+	        } else {
+	            alert("Your browser doesn't support geolocation service.");
+	        }
+	    }
+	    var geo_options = {
+	    		  enableHighAccuracy: true, 
+	    		  maximumAge        : 30000, 
+	    		  timeout           : 20000
+	    		};
+	    
+	    function getloc() {
+	        navigator.geolocation.getCurrentPosition(updateLocation, handleLocationError);
+	        //navigator.geolocation.watchPosition(updateLocation, handleLocationError, geo_options);
+	 
+	        
+	    }
+
+	    function updateLocation(position) {
+	        var _latitude = position.coords.latitude;
+	        var _longitude = position.coords.longitude;
+	        var accuracy = position.coords.accuracy;
+
+	        latitude = _latitude;
+	        longitude = _longitude;
+	    /*     document.getElementById("latitude").innerHTML = "latitude: " + latitude;
+	        document.getElementById("longitude").innerHTML = "longitude: " + longitude;
+	        document.getElementById("accuracy").innerHTML = "accuracy: " + accuracy; */
+	        
+	        initMap(latitude,longitude);
+	        
+	   		
+	    }
+
+	    function handleLocationError(error) {
+	        switch(error.code) {
+	        case error.UNKNOWN_ERROR:
+	            alert("unknown error");
+	            break;
+	        case error.PERMISSION_DENIED:
+	            alert("Permission to use Geolocation was denied");
+	            break;
+	        case error.POSITION_UNAVAILABLE:
+	            alert("unavailable");
+	            break;
+	        case error.TIMEOUT:
+	            alert("timeout error");
+	            break;
+	        }
+	    }
+	    loadDemo();
+	    
+	    
 		sendbutton.click(function(){
 			var chatIput = $("#chat-input");
 		
@@ -285,7 +345,7 @@ function onCreate(){
 
 		connButton.click(function(event){
 		
-			wsocket = new WebSocket("ws://125.129.60.149:8080/Motherbirds/chat/chatserver");
+			wsocket = new WebSocket("ws://211.238.142.79:8080/Motherbirds/chat/chatserver");
 			wsocket.onopen = function(event){
 				//alert("접속 되었습니다.");
 				console.log(event);
@@ -294,7 +354,9 @@ function onCreate(){
 					    text: "'${n.id}'접속했습니다",
 					    id:  '${loginID}',
 					    room:'${n.id}',
-					    date: Date.now()
+					    date: Date.now(),
+						latitude :latitude,
+			     		longitude :longitude
 			};
 				
 				wsocket.send(JSON.stringify(msg));
@@ -304,6 +366,8 @@ function onCreate(){
 			wsocket.onmessage = function(event){
 		 		var li = document.createElement("li");
 				var data = JSON.parse(event.data);
+				
+				console.log(data);
 				li.textContent = "[" + data.id + "]"+data.text;
 				
 				chatList.append(li); 		
@@ -327,56 +391,5 @@ function onCreate(){
 	 });
 </script>
 <script>
-    function loadDemo() {
-        if (navigator.geolocation) {
-          /*   alert("Your browser supports geolocation service."); */
-            getloc();
-        } else {
-            alert("Your browser doesn't support geolocation service.");
-        }
-    }
-    var geo_options = {
-    		  enableHighAccuracy: true, 
-    		  maximumAge        : 30000, 
-    		  timeout           : 20000
-    		};
-    
-    function getloc() {
-        navigator.geolocation.getCurrentPosition(updateLocation, handleLocationError);
-        //navigator.geolocation.watchPosition(updateLocation, handleLocationError, geo_options);
- 
-        
-    }
 
-    function updateLocation(position) {
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
-        var accuracy = position.coords.accuracy;
-
-    /*     document.getElementById("latitude").innerHTML = "latitude: " + latitude;
-        document.getElementById("longitude").innerHTML = "longitude: " + longitude;
-        document.getElementById("accuracy").innerHTML = "accuracy: " + accuracy; */
-        
-        initMap(latitude,longitude);
-        
-   		
-    }
-
-    function handleLocationError(error) {
-        switch(error.code) {
-        case error.UNKNOWN_ERROR:
-            alert("unknown error");
-            break;
-        case error.PERMISSION_DENIED:
-            alert("Permission to use Geolocation was denied");
-            break;
-        case error.POSITION_UNAVAILABLE:
-            alert("unavailable");
-            break;
-        case error.TIMEOUT:
-            alert("timeout error");
-            break;
-        }
-    }
-    loadDemo();
 </script>
