@@ -37,8 +37,8 @@
 #chat-client{
 	border: 1px solid #e9e9e9;
 	box-sizing: border-box;
-	padding: 10px;
-	height: 300px;
+	/* padding: 10px; */
+	height: 304px;
 }
 #chat-list-box{
     overflow-y: auto;
@@ -46,6 +46,9 @@
     height: 100%;
     padding-bottom: 10px;
     min-height: 300px;
+}
+#chat-panel{
+    margin-top: 10px;
 }
 /*  #map {
       	width:100%;
@@ -63,89 +66,88 @@
 ${n.title }</br>
 ${n.content }</br>
 ${n.memberId }</br> --%>
-<div class="row">
-<!-- <p id="latitude">?</p>
-<p id="longitude">?</p>
-<p id="accuracy">?</p> -->
+	<div class="row">
 
-   <div class="carousel carousel-slider center" data-indicators="true">
-     <div class="carousel-fixed-item center">
-      <a class="btn waves-effect white grey-text darken-text-2">button</a>
-    </div>
 
-    <div class="carousel-item amber white-text" href="#two!">
-      <h2>Vote Panel</h2>
-      <p class="white-text">This is your vote panel</p>
-       <form action="#">
-    	<p>
-	      <input class="with-gap" name="group1" type="radio" id="test1"  />
-	      <label for="test1">Green</label>
-	    </p>
-	        <p>
-	      <input class="with-gap" name="group1" type="radio" id="test2"  />
-	      <label for="test2">Green</label>
-	    </p>
-	    <p>
-	      <input class="with-gap" name="group1" type="radio" id="test3"  />
-	      <label for="test3">Green</label>
-	    </p>
-	    <p>
-	      <input class="with-gap" name="group1" type="radio" id="test4"  />
-	      <label for="test4">Green</label>
-	    </p>
-	   <p>
-	      <input class="with-gap" name="group1" type="radio" id="test5"  />
-	      <label for="test5">Green</label>
-	    </p>
-	
-	  </form>
-    </div>
-    <div class="carousel-item green white-text" href="#three!">
-      <h2>VoteResult Panel</h2>
-      <p class="white-text">This is your vote result panel</p>
-      <div id="range_01" class="irs"></div>
-      <div id="range_02" class="irs"></div>
-      <div id="range_03" class="irs"></div>
-      <div id="range_04" class="irs"></div>
-      <div id="range_05" class="irs"></div>
-    </div>
+	<div class="carousel carousel-slider center" data-indicators="true">
+		<div class="carousel-fixed-item center">
+		<a class="btn waves-effect white grey-text darken-text-2">button</a>
+		</div>
 
-    <div class="carousel-item" id="map">
-       <h2>Map Panel</h2>
-    </div>
-    
-  </div>
-<!-- <div id="range_01" class="irs-hidden-input"></div> -->
-<script type="text/javascript" src="/Motherbirds/resource/js/ion.rangeSlider.js"></script>
-
-<!-- <div class="profile-box">
-</div> -->
-<!-- 채팅  -->
-<div>
-	<input id="conn-button" type="button" value="접속" />
-</div>
-<div id="chat-client">
-	<div id="chat-list-box">
-		<ul id="chat-list">
-		<c:forEach var="v" items="${n.comments }">
-		<li>[${v.memberId }] ${v.comment} </li>
-		</c:forEach>
-
-		</ul>
-	</div>
-	<div id="chat-panel" >
-		<form id="comment-add-form" action="freeBoard-comment-add" method="post">
-			<textarea id="chat-input"name="message"></textarea>
-			<input id="send-button" type="button" value="전송"  />
+		<div class="carousel-item amber white-text" href="#two!">
+		<h2>Vote Panel</h2>
+		<p class="white-text">This is your vote panel</p>
+		<form action="#">
+			<p>
+			<input class="with-gap" name="group1" type="radio" id="test1"  />
+			<label for="test1">Green</label>
+			</p>
+				<p>
+			<input class="with-gap" name="group1" type="radio" id="test2"  />
+			<label for="test2">Green</label>
+			</p>
+			<p>
+			<input class="with-gap" name="group1" type="radio" id="test3"  />
+			<label for="test3">Green</label>
+			</p>
+			<p>
+			<input class="with-gap" name="group1" type="radio" id="test4"  />
+			<label for="test4">Green</label>
+			</p>
+		<p>
+			<input class="with-gap" name="group1" type="radio" id="test5"  />
+			<label for="test5">Green</label>
+			</p>
 		
-		 	<input type="hidden" name="boardId" value=${n.id }>
-        	 <input type="hidden" name="memberId" value=<security:authentication property="name"/>>
 		</form>
-	</div>
-	
-</div>
+		</div>
+		<div class="carousel-item green white-text" href="#three!">
+		<h2>VoteResult Panel</h2>
+		<p class="white-text">This is your vote result panel</p>
+		<div id="range_01" class="irs"></div>
+		<div id="range_02" class="irs"></div>
+		<div id="range_03" class="irs"></div>
+		<div id="range_04" class="irs"></div>
+		<div id="range_05" class="irs"></div>
+		</div>
 
-</div>
+		<div class="carousel-item" id="map">
+		<h2>Map Panel</h2>
+		</div>
+		
+	</div>
+
+	<script type="text/javascript" src="/Motherbirds/resource/js/ion.rangeSlider.js"></script>
+
+
+		<div>
+			<input id="conn-button" type="button" value="접속" />
+		</div>
+		<div id="chat-client">
+			<div id="chat-list-box">
+				<ul id="chat-list" class="collection">
+				<c:forEach var="v" items="${n.comments }">
+				<li class="collection-item">[${v.memberId }] ${v.comment} </li>
+				</c:forEach>
+
+				</ul>
+			</div>
+			<div id="chat-panel" >
+				<form id="comment-add-form" action="freeBoard-comment-add" method="post">
+					<textarea id="chat-input"name="message"></textarea>
+					<input id="send-button" type="button" value="전송"  />
+				
+					<input type="hidden" name="boardId" value=${n.id }>
+					<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
+				</form>
+			</div>
+			
+		</div>
+		<div class="userlistbox">
+
+		</div>
+
+	</div>
 </div>
 
 
@@ -341,11 +343,15 @@ function onCreate(){
 			
 			wsocket.send(JSON.stringify(msg));
 			onCreate();
+			
+			$("#chat-list-box").scrollTop(10000);
+			chatIput.val('');
+			chatIput.focus(); 
 		});
 
 		connButton.click(function(event){
 		
-			wsocket = new WebSocket("ws://211.238.142.79:8080/Motherbirds/chat/chatserver");
+			wsocket = new WebSocket("ws://125.129.60.149:8080/Motherbirds/chat/chatserver");
 			wsocket.onopen = function(event){
 				//alert("접속 되었습니다.");
 				console.log(event);
@@ -367,6 +373,28 @@ function onCreate(){
 		 		var li = document.createElement("li");
 				var data = JSON.parse(event.data);
 				
+				
+				console.log(data.type);
+
+				switch (data.type) {
+					case "message":
+						//<li class="collection-item">[${v.memberId }] ${v.comment} </li>
+						var li = "<li class=collection-item>["+ data.id +"]"+ data.text+"</li>";
+						chatList.append(li); 
+						break;
+				
+					case "userlist":
+
+						var ul = "";
+						for(i = 0; i < data.userlist.length;i++){
+							ul += data.userlist[i].id +"<br>";
+						}
+						$(".userlistbox").text(ul);
+						break;
+					default:
+						break;
+				}
+	/* 			
 				console.log(data);
 				li.textContent = "[" + data.id + "]"+data.text;
 				
@@ -377,7 +405,7 @@ function onCreate(){
 				$("#chat-list-box").scrollTop(10000);
 				var chatIput = $("#chat-input");
 				chatIput.val('');
-				chatIput.focus();
+				chatIput.focus(); */
 				
 				
 				

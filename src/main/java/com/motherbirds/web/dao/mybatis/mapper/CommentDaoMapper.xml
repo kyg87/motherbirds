@@ -11,7 +11,7 @@ SELECT * FROM motherbird.Comment where id = #{id}
 
 <select resultType="com.motherbirds.web.entity.Comment" id="getList"> 
 
-SELECT * FROM motherbird.Comment order by Comment.regDate asc;
+SELECT * FROM motherbird.Comment where boardId = #{boardId} order by Comment.regDate asc;
 
 </select>
 

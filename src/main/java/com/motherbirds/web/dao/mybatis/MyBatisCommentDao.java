@@ -20,10 +20,10 @@ public class MyBatisCommentDao implements CommentDao{
 	private SqlSession sqlSession;
 
 	@Override
-	public List<Comment> getList() {
+	public List<Comment> getList(String boardId) {
 		CommentDao commentDao;
 		commentDao = sqlSession.getMapper(CommentDao.class);
-		return commentDao.getList();
+		return commentDao.getList(boardId);
 	}
 
 	@Override

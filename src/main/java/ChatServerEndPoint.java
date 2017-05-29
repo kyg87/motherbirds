@@ -77,6 +77,11 @@ public class ChatServerEndPoint {
       else {
     	  ArrayList<ChatData> list = map.get(chatData.getRoom());
     	  
+    	  Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+    	  
+    	  String gg = gson.toJson(new ChatMessage("message", chatData));
+		  System.out.println(gg);
+		  
     	  for (ChatData chatData1 : list) {
     		  chatData1.getSession().getBasicRemote().sendText(data);
 		}
@@ -105,14 +110,7 @@ public class ChatServerEndPoint {
 	   ArrayList<ChatData> list = new ArrayList<>();
 	   list.add(chatData);
 	   map.put(room, list);
-	   
-	   System.out.println("개설된 방 :" + room);
-	   System.out.println("유저수 : " + list.size());
-	   
-/*	   Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-	   
-	   String gg = gson.toJson(list);
-	   System.out.println(gg);*/
+
    }
    
    void addUserRomm(String room,ChatData chatData){
@@ -122,10 +120,7 @@ public class ChatServerEndPoint {
 	   System.out.println("개설된 방 :" + room);
 	   System.out.println("유저수 : " + list.size());
 	   
-	 /*  Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-	   
-	   String gg = gson.toJson(list);
-	   System.out.println(gg);*/
+
    }
       
 }

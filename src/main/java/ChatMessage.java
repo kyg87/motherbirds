@@ -8,12 +8,19 @@ public class ChatMessage {
 	private String type;
 	@Expose
 	private ArrayList<ChatData> userlist;
+	@Expose
+	private ChatData chatData;
 	
 	public ChatMessage(String type,ArrayList<ChatData> userlist) {
 		// TODO Auto-generated constructor stub
 		
 		this.type = type ;
 		this.userlist = userlist;
+	}
+	
+	public ChatMessage(String type,ChatData chatData){
+		this.type = type ;
+		this.chatData = chatData;
 	}
 
 	public String getType() {
@@ -30,6 +37,14 @@ public class ChatMessage {
 
 	public void setUserlist(ArrayList<ChatData> userlist) {
 		this.userlist = userlist;
+	}
+
+	public ChatData getChatData() {
+		return chatData;
+	}
+
+	public void setChatData(ChatData chatData) {
+		this.chatData = chatData;
 	}
 	
 	
