@@ -53,7 +53,7 @@ public class MainController {
 		return "main.detail";
 	}
 	
-	@RequestMapping("free-reg")
+	@RequestMapping("reg")
 	public String free() {
 
 		return "main.free-reg";

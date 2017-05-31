@@ -9,7 +9,8 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1.0" />
 <title>Starter Template - Materialize</title>
- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <!-- CSS  -->
 </head>
 
@@ -39,164 +40,74 @@
     </div>
   </nav>
   
-<p id="latitude">?</p>
-<p id="longitude">?</p>
-<p id="accuracy">?</p>
-
-<div id="map"></div>
-
-
-<div class="card-content">                    
-                    <a class="btn-floating activator btn-move-up waves-effect waves-light darken-2 right">
-                        <i class="mdi-editor-mode-edit"></i>
-                    </a>
-
-                    <div class="row">
-                      <div class="col s12 m6">
-                        <form action="reg" method="post"class="contact-form">
-                          <div class="row">
-                            <div class="input-field col s12">
-                              <input name="title" id="name" type="text">
-                              <label for="title" class="">title</label>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="input-field col s12">
-                              <input name ="content" name="content" id="email" type="text">
-                              <label for="content" class="">content</label>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="input-field col s12">
-                              <input id="website" type="text">
-                              <label for="website" class="">Website</label>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="input-field col s12">
-                              <textarea id="message" class="materialize-textarea"></textarea>
-                              <label for="message" class="">Message</label>
-                            </div>
-                            <input type="hidden" name="memberId" value=<security:authentication property="name"/>	>
-                            <div class="row">
-                              <div class="input-field col s12">
-                                <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Send
-                                  <i class="mdi-content-send right"></i>
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </form>
-                      </div>                      
-                      <div class="col s12 m6">
-                        <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
-                          <li>
-                            <div class="collapsible-header"><i class="mdi-communication-live-help"></i> FAQ</div>
-                            <div class="collapsible-body" style="">
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            </div>
-                          </li>
-                          <li class="active">
-                            <div class="collapsible-header active"><i class="mdi-communication-email"></i> Need Help?</div>
-                            <div class="collapsible-body" style="display: block;">
-                              <p>We welcome your inquiries at the email address <a mailto="support@geekslabs.com">support@geekslabs.com</a>.We will get in touch with you soon.</p>
-                              <p>As a creative studio we believe no client is too big nor too small to work with us to obtain good advantage.By combining the creativity of artists with the precision of engineers we develop custom solutions that achieve results. <a href="http://themeforest.net/user/geekslabs/portfolio" target="_blank">See our work.</a></p>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="collapsible-header"><i class="mdi-editor-insert-emoticon"></i> Testimonial</div>
-                            <div class="collapsible-body" style="">
-                              <blockquote>Fantastic product, my sites all run super fast and the support is excellent!<br>The website you designed helped a lot! </blockquote>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-
-                </div>
-
-
-
-    <script>
-      var map;
-      function initMap(x,y) {
-    
-        map = new google.maps.Map(document.getElementById('map'), {
-       
-          center: new google.maps.LatLng(x,y),
-          zoom: 18
-        });
-        
-        var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(x,y),
-            map: map
-          });
-        
-
-      }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrt3JIkcXTts0sgMlRYN47SEReOOGl3lQ&callback=initMap"
-    async defer></script>
-
+  <!-- content -->
+	<div id="content">
+	
+		<form action = "writer-proc.jsp" method="post" enctype="multipart/form-data">
+			<table id="main-table">
+				<thead>
+					<tr>
+						<td>제목</td>
+						<td><input name ="title" id="TITLE" class="box green-box" type="text"
+							placeholder="제목을입력하세요." required/></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>내용</td>
+						<td>
+						<textarea name ="content" id="content-box" rows="30" cols="80"></textarea>
+						</td>
+					</tr>
+				</tbody>
+				<tbody id="toDoList">
+					<tr>
+						<td>1번</td>
+						<td><input name ="select" id="task" class="box" type="text"
+							placeholder="항목을입력하세요." required/></td>
+					</tr>
+					<tr>
+						<td>2번</td>
+						<td><input name ="select" class="box" type="text" placeholder="항목을입력하세요." required/>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			
+			<div class="info-add">
+				<input type="button" id="addTaskBtn" value ="╂"/>
+			</div>
+			
 		
+			
+			
+			<div id="option-field">
+				<div id="image-option">
+					<h1 class="hidden">사진입력</h1>
+					<label>사진첨부</label>
+					<input name ="file" type="file"  id="getfile" class="upload-box" required>
+					   <img id="thumbnail" src="" width="140px" height="140px"/>
+				</div>
+			</div>
+			
+			
+			<div id="option-bottom">
+				<input class="back-box btn" type="button" value="목록으로" /> 
+			<input name="userName" type="hidden" value=<%=request.getSession().getAttribute("member") %> />
+				<input id="reg-button" class="success-box btn" type="submit" value="등록하기" />
+			</div>
+			
+		</form>
 
+				<!-- ENDS content -->
+	
+	
 	</div>
+
+
 </main>
+<script type="text/javascript" src="/Motherbirds/resource/js/toDoListAdd.js"></script>
+<script type="text/javascript" src="/Motherbirds/resource/js/fileUpload.js"></script>
 
-<script>
-    function loadDemo() {
-        if (navigator.geolocation) {
-            //alert("Your browser supports geolocation service.");
-            getloc();
-        } else {
-            alert("Your browser doesn't support geolocation service.");
-        }
-    }
-    var geo_options = {
-    		  enableHighAccuracy: true, 
-    		  maximumAge        : 30000, 
-    		  timeout           : 20000
-    		};
-    
-    function getloc() {
-        //navigator.geolocation.getCurrentPosition(updateLocation, handleLocationError);
-        navigator.geolocation.watchPosition(updateLocation, handleLocationError, geo_options);
- 
-        
-    }
-
-    function updateLocation(position) {
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
-        var accuracy = position.coords.accuracy;
-
-        document.getElementById("latitude").innerHTML = "latitude: " + latitude;
-        document.getElementById("longitude").innerHTML = "longitude: " + longitude;
-        document.getElementById("accuracy").innerHTML = "accuracy: " + accuracy;
-        
-        initMap(latitude,longitude);
-        
-   		
-    }
-
-    function handleLocationError(error) {
-        switch(error.code) {
-        case error.UNKNOWN_ERROR:
-            alert("unknown error");
-            break;
-        case error.PERMISSION_DENIED:
-            alert("Permission to use Geolocation was denied");
-            break;
-        case error.POSITION_UNAVAILABLE:
-            alert("unavailable");
-            break;
-        case error.TIMEOUT:
-            alert("timeout error");
-            break;
-        }
-    }
-    loadDemo();
-</script>
 </head>

@@ -36,9 +36,9 @@
 		<security:authentication property="name" var="name" />
 		
 		<security:authorize access="isAnonymous()">
-			<a class="login" href="${root}/joinus/login">Login</a>
+		<li><a class="login" href="${root}/joinus/login">Login</a></li>
 		</security:authorize>
-        <li><a href="sass.html">Sass</a></li>
+        <li><a href="reg">reg</a></li>
         <li><a href="badges.html">Components</a></li>
         <li><a href="collapsible.html">Javascript</a></li>
         <li><a href="mobile.html">Mobile</a></li>
