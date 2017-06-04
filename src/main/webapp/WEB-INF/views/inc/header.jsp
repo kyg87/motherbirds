@@ -29,7 +29,7 @@
 
   <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo center">Logo</a>
+      <a href="index" class="brand-logo center">Logo</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
       	<security:authentication property="authorities" var="auths"/>

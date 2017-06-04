@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.motherbirds.web.dao.BoardFileDao" >
+    
+    <select resultType="com.motherbirds.web.entity.BoardFile" id="get"> 
+
+		SELECT 
+		    *
+		FROM
+		    motherbird.Board1_File
+		WHERE
+		    boardId = #{id};
+
+</select>
+
+	<insert id="add" parameterType="com.motherbirds.web.entity.BoardFile">
+		<selectKey order="BEFORE" keyProperty="id" resultType="String">
+			select IFNULL(max(cast(id as unsigned)),0)+1 id from Board1_File
+		</selectKey>
+		INSERT INTO `motherbird`.`Board1_File`
+		(
+		`id`,
+		`name`,
+		`boardId`
+		)
+		VALUES
+		(
+		#{id},
+		#{name},
+		#{boardId}
+		)
+	
+	</insert>
+	
+	<delete id="delete">
+		DELETE FROM `motherbird`.`Board1_File`
+		WHERE id=#{id}
+		
+	</delete>
+	
+	
+	<update id="update">
+	
+		UPDATE `motherbird`.`Board1_File`
+		SET
+	
+		`name` = #{name}
+	
+	
+		WHERE `id` = #{id}
+		
+	</update>
+	
+</mapper>

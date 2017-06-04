@@ -43,7 +43,7 @@
   <!-- content -->
 	<div id="content">
 	
-		<form action = "writer-proc.jsp" method="post" enctype="multipart/form-data">
+		<form action = "board-reg" method="post" enctype="multipart/form-data">
 			<table id="main-table">
 				<thead>
 					<tr>
@@ -84,7 +84,7 @@
 			
 			<div id="option-field">
 				<div id="image-option">
-					<h1 class="hidden">사진입력</h1>
+					
 					<label>사진첨부</label>
 					<input name ="file" type="file"  id="getfile" class="upload-box" required>
 					   <img id="thumbnail" src="" width="140px" height="140px"/>
@@ -94,7 +94,7 @@
 			
 			<div id="option-bottom">
 				<input class="back-box btn" type="button" value="목록으로" /> 
-			<input name="userName" type="hidden" value=<%=request.getSession().getAttribute("member") %> />
+			<input name="memberId" type="hidden" value=<%=request.getSession().getAttribute("member") %> />
 				<input id="reg-button" class="success-box btn" type="submit" value="등록하기" />
 			</div>
 			

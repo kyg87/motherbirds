@@ -66,57 +66,12 @@ ${n.memberId }</br> --%>
 	<div class="row">
 
 
-	<!-- <div class="carousel carousel-slider center" data-indicators="true">
-		<div class="carousel-fixed-item center">
-		<a class="btn waves-effect white grey-text darken-text-2">button</a>
-		</div>
-
-		<div class="carousel-item amber white-text" href="#two!">
-		<h2>Vote Panel</h2>
-		<p class="white-text">This is your vote panel</p>
-		<form action="#">
-			<p>
-			<input class="with-gap" name="group1" type="radio" id="test1"  />
-			<label for="test1">Green</label>
-			</p>
-				<p>
-			<input class="with-gap" name="group1" type="radio" id="test2"  />
-			<label for="test2">Green</label>
-			</p>
-			<p>
-			<input class="with-gap" name="group1" type="radio" id="test3"  />
-			<label for="test3">Green</label>
-			</p>
-			<p>
-			<input class="with-gap" name="group1" type="radio" id="test4"  />
-			<label for="test4">Green</label>
-			</p>
-		<p>
-			<input class="with-gap" name="group1" type="radio" id="test5"  />
-			<label for="test5">Green</label>
-			</p>
-		
-		</form>
-		</div>
-		<div class="carousel-item green white-text" href="#three!">
-		<h2>VoteResult Panel</h2>
-		<p class="white-text">This is your vote result panel</p>
-		<div id="range_01" class="irs"></div>
-		<div id="range_02" class="irs"></div>
-		<div id="range_03" class="irs"></div>
-		<div id="range_04" class="irs"></div>
-		<div id="range_05" class="irs"></div>
-		</div>
-
-		<div class="carousel-item" id="map">
-		<h2>Map Panel</h2>
-		</div>
-		
-	</div> -->
+	 <img src="\Motherbirds\resource\upload/${file.name }">
  <div class="slider">
     <ul class="slides">
       <li>
-        <img src="http://lorempixel.com/580/250/nature/1"> <!-- random image -->
+     
+        <img src="resouce/upload/"${file.name }"> <!-- random image -->
         <div class="caption center-align">
           <h3>This is our big Tagline!</h3>
           <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>

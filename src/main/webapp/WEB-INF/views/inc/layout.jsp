@@ -69,7 +69,7 @@
      	 //슬라이드 초기화
 		  $(document).ready(function(){
 		      $('.slider').slider({
-		    	 height : 200,
+		    	 height : 350,
 		    	 interval: 100000
 		    
 		      });
